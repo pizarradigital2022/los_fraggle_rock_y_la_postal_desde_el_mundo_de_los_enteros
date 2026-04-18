@@ -5,7 +5,6 @@
 <title>Los Fraggle Rock y la postal desde el mundo de los enteros</title>
 <link rel="icon" type="image/x-icon" href="./resources/favicon.ico">
   
-<!-- MathJax -->
 <script>
 window.MathJax = {
   tex: {inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']]}
@@ -20,15 +19,6 @@ body{
     background: radial-gradient(circle, #4b2e83, #ff9966);
     color:#fff;
     text-align:center;
-}
-
-/* efecto mágico fraggle */
-.aura {
-  animation: auraGlow 2s infinite alternate;
-}
-@keyframes auraGlow {
-  from { box-shadow: 0 0 10px #ffcc00; }
-  to { box-shadow: 0 0 30px #00ffcc; }
 }
 
 .screen{display:none; padding:20px;}
@@ -65,16 +55,15 @@ button:hover{background:#ff3300;}
     border-radius:10px;
 }
 
-.hint{display:none; margin:10px; color:#00ffcc;}
-
-.candado {
-  width: 420px;
-  height: 60px;
-  font-size: 22px;
-  text-align: center;
-  border-radius: 12px;
+.carta{
+    background: #fff3cd;
+    color:#000;
+    padding:20px;
+    border-radius:15px;
+    max-width:700px;
+    margin:auto;
+    box-shadow:0 0 20px #ffcc00;
 }
-
 </style>
 </head>
 
@@ -82,86 +71,106 @@ button:hover{background:#ff3300;}
 
 <div class="timer" id="timer">Tiempo: --:--</div>
 
-<!-- INTRO -->
-<div id="intro" class="screen active aura">
-<h1>🪨 Escape Room: Fraggle Rock 🪨</h1>
+<!-- INTRO INICIAL -->
+<div id="intro" class="screen active">
+<h1>🪨 Los Fraggle Rock y la postal desde el mundo de los enteros 🪨</h1>
 
-<p><strong>Gobo recibe una postal del Tío Matt...</strong></p>
-
-<p>
-“Querido Gobo:<br><br>
-He descubierto números positivos y negativos. Son los <strong>enteros</strong>.<br>
-Sumar, restar, multiplicar y dividir… ¡todo depende de los signos!<br>
-Pero cuidado… los Goris han bloqueado la energía del Risco con acertijos.<br>
-Solo dominando estas operaciones podréis salvar Fraggle Rock.<br><br>
-¡Confío en vosotros!”
-</p>
+<p>Los Goris han bloqueado la energía del Risco Fraguel…</p>
 
 <h2>Selecciona duración</h2>
 <button onclick="startGame(60)">60 min</button>
 <button onclick="startGame(90)">90 min</button>
+</div>
 
+<!-- CARTA DEL TÍO MATT -->
+<div id="introCarta" class="screen">
+<h2>📜 Postal del Tío Matt</h2>
+
+<div class="carta">
+<p><strong>Querido Gobo:</strong></p>
+
+<p>
+He descubierto algo increíble en el Mundo Exterior… ¡los humanos usan números positivos y negativos!
+</p>
+
+<p>
+🔹 <strong>Enteros:</strong> positivos (ganas) y negativos (pierdes)<br>
+🔹 <strong>Suma:</strong> mismo signo → sumas | distinto → restas<br>
+🔹 <strong>Resta:</strong> sumar el contrario<br>
+🔹 <strong>Multiplicar/dividir:</strong><br>
+signos iguales → + | distintos → -
+</p>
+
+<p>
+Pero cuidado… los Goris han bloqueado el Risco con acertijos matemáticos 😱
+</p>
+
+<p><strong>Equivocarse es parte del camino. ¡Prueba, piensa y coopera!</strong></p>
+
+<p>Tu tío, Matt</p>
+</div>
+
+<button onclick="next('test1')">Comenzar aventura</button>
 </div>
 
 <!-- PRUEBAS -->
 
 <div id="test1" class="screen">
-<h2>Prueba 1: Gobo y los rábanos</h2>
+<h2>Prueba 1</h2>
 <div class="math">\[ 12 - 7 + 5 \]</div>
-<p>Resultado absoluto</p>
 <button onclick="next('test2')">Continuar</button>
 </div>
 
 <div id="test2" class="screen">
-<h2>Prueba 2: Bombo en el pozo</h2>
+<h2>Prueba 2</h2>
 <div class="math">\[ -3 + 8 \]</div>
 <button onclick="next('test3')">Continuar</button>
 </div>
 
 <div id="test3" class="screen">
-<h2>Prueba 3: Mokey y la temperatura</h2>
+<h2>Prueba 3</h2>
 <div class="math">\[ 6 - 10 \]</div>
 <button onclick="next('test4')">Continuar</button>
 </div>
 
 <div id="test4" class="screen">
-<h2>Prueba 4: Musi baila</h2>
+<h2>Prueba 4</h2>
 <div class="math">\[ (-3)\cdot4 + (-2)\cdot3 \]</div>
 <button onclick="next('test5')">Continuar</button>
 </div>
 
 <div id="test5" class="screen">
-<h2>Prueba 5: Los curris</h2>
+<h2>Prueba 5</h2>
 <div class="math">\[ 8 - 3 - 6 + 5 - 4 + 2 \]</div>
 <button onclick="next('test6')">Continuar</button>
 </div>
 
 <div id="test6" class="screen">
-<h2>Prueba 6: Túnel</h2>
+<h2>Prueba 6</h2>
 <div class="math">\[ (-2)\cdot5 + 12:(-3) - 4 \]</div>
 <button onclick="next('test7')">Continuar</button>
 </div>
 
 <div id="test7" class="screen">
-<h2>Prueba 7: Junior Gorg</h2>
+<h2>Prueba 7</h2>
 <div class="math">\[ (-6)\cdot(-2) + (-8) \]</div>
 <button onclick="next('test8')">Continuar</button>
 </div>
 
 <div id="test8" class="screen">
-<h2>Prueba 8: Mokey mensaje</h2>
+<h2>Prueba 8</h2>
 <div class="math">\[ x \cdot (-3) = 15 \]</div>
 <button onclick="next('test9')">Continuar</button>
 </div>
 
 <div id="test9" class="screen">
-<h2>Prueba 9: Mapa de Tío Matt</h2>
+<h2>Prueba 9</h2>
 <div class="math">\[ (-4)\cdot3 + (-2)\cdot(-6) - 5\cdot(-2) \]</div>
 <button onclick="next('test10')">Continuar</button>
 </div>
 
 <div id="test10" class="screen">
-<h2>Prueba 10: Gran Gori</h2>
+<h2>Prueba 10</h2>
 <div class="math">\[ (-5)(2-7) + \frac{18}{-3} - (-4)(-2) \]</div>
 <button onclick="next('lock')">Ir al candado</button>
 </div>
@@ -169,18 +178,14 @@ Solo dominando estas operaciones podréis salvar Fraggle Rock.<br><br>
 <!-- CANDADO -->
 <div id="lock" class="screen">
 <h1>🔐 Candado final 🔐</h1>
-
-<p>Introduce el código final (últimos dígitos de cada prueba)</p>
-
-<input id="password" class="candado">
+<input id="password">
 <br>
 <button onclick="checkPassword()">Desbloquear</button>
 </div>
 
 <!-- ÉXITO -->
-<div id="success" class="screen aura">
+<div id="success" class="screen">
 <h1>🎉 ¡Fraggle Rock salvado! 🎉</h1>
-<p>Habéis restaurado la energía del Risco</p>
 </div>
 
 <!-- FRACASO -->
@@ -197,7 +202,7 @@ let gameFinished=false;
 function startGame(minutes){
     timeLeft = minutes*60;
     gameFinished=false;
-    show('test1');
+    show('introCarta'); // 👈 AQUÍ ESTÁ EL CAMBIO
     startTimer();
 }
 

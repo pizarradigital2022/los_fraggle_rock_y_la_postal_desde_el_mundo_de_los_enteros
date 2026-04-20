@@ -48,13 +48,24 @@ button{
 button:hover{background:#ff3300;}
 
 .math{
-    font-size:24px;
-    margin:20px;
+    font-size:16px;
+    margin:15px;
     background:rgba(0,0,0,0.5);
     padding:15px;
     border-radius:10px;
 }
 
+.candado {
+  width: 500px;
+  max-width: 90%;
+  height: 70px;
+  font-size: 26px;
+  text-align: center;
+  border-radius: 12px;
+  border: 3px solid #ffcc00;
+  box-shadow: 0 0 15px #ff6600;
+}
+  
 .carta{
     background: #fff3cd;
     color:#000;
@@ -63,6 +74,12 @@ button:hover{background:#ff3300;}
     max-width:700px;
     margin:auto;
     box-shadow:0 0 20px #ffcc00;
+}
+
+.hint{
+  display:none;
+  margin:10px;
+  color:#00ffcc;
 }
 
 .imagen-prueba {
@@ -100,6 +117,8 @@ button:hover{background:#ff3300;}
 <h2>Selecciona duración</h2>
 <button onclick="startGame(60)">60 min</button>
 <button onclick="startGame(90)">90 min</button>
+  <hr>
+  Modo profesor: <input type="password" id="accesoProfe" placeholder="Acceso profesor">
  <hr>
   <p>Autor: Joaquín Candañedo.<br><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="./resources/CC_BY_SA.png" alt="Creative Commons Reconocimiento - Compartir Igual"></a></p>  
 </div>
@@ -582,6 +601,35 @@ Si tuvieras: 3, -2, 5 → escribirías: <strong>3-25</strong>
 <button onclick="restart()">Reintentar</button>
 </div>
 
+
+
+<div id="panelProfesor" style="position:fixed;
+bottom:0;
+left:0;
+background:black;
+color:#00ffcc;
+padding:10px;
+font-size:14px;
+display:none;
+z-index:999;
+text-align:left;">
+<b>Panel profesor</b><br><br>
+
+Prueba 1: 10<br>
+Prueba 2: 5<br>
+Prueba 3: -4<br>
+Prueba 4: -18<br>
+Prueba 5: 2<br>
+Prueba 6: -18<br>
+Prueba 7: 4<br>
+Prueba 8: -5<br>
+Prueba 9: 10<br>
+Prueba 10: 11<br><br>
+
+🔐 Contraseña final:<br>
+<b>105-4-182-184-51011</b>
+</div>
+  
 <script>
 let timeLeft;
 let timerInterval;
@@ -601,9 +649,10 @@ function startTimer(){
         let m=Math.floor(timeLeft/60);
         let s=timeLeft%60;
         document.getElementById("timer").innerText=`Tiempo: ${m}:${s.toString().padStart(2,'0')}`;
-        if(timeLeft<=0){
-            show('fail');
-            clearInterval(timerInterval);
+        if(timeLeft <= 0){
+          timeLeft = 0;
+          show('fail');
+          clearInterval(timerInterval);
         }
     },1000);
 }
@@ -625,10 +674,37 @@ function checkPassword(){
     }
 }
 
+function showHint(id){
+    let hint = document.getElementById(id);
+
+    if(hint.style.display === "block") return;
+
+    hint.style.display = "block";
+
+    // ⏳ Penalización de 5 minutos
+    timeLeft -= 300;
+
+    // Si se quedan sin tiempo → pierden
+    if(timeLeft <= 0){
+        show('fail');
+        clearInterval(timerInterval);
+    }
+}
+
 function restart(){
     clearInterval(timerInterval);
     show('intro');
 }
+
+document.getElementById("accesoProfe").addEventListener("input", function() {
+  const panel = document.getElementById("panelProfesor");
+
+  if (this.value === "PROFE") {
+    panel.style.display = "block";
+  } else {
+    panel.style.display = "none";
+  }
+});
 </script>
 
 </body>

@@ -526,12 +526,49 @@ Empieza resolviendo el paréntesis, luego multiplicaciones y divisiones, y por �
 <button onclick="next('lock')">Ir al candado final</button>
 </div>
 
-<!-- CANDADO -->
 <div id="lock" class="screen">
-<h1>🔐 Candado final 🔐</h1>
-<input id="password">
+<h1>🔐 Candado final del Risco Fraguel 🔐</h1>
+<img src="./resources/imagen_candado.png" alt="El Rey Goris sujetando el candado" class="imagen-prueba">
+
+<p>
+Habéis superado todas las pruebas… ¡estáis muy cerca de salvar Fraggle Rock! 🪨✨<br><br>
+
+El <strong>Rey Goris</strong> ha creado un candado mucho más difícil…<br>
+Solo se abrirá si usáis correctamente <strong>todos los resultados con su signo</strong>.
+</p>
+
+<h3>📌 Instrucciones</h3>
+
+<p style="max-width:650px; margin:auto; text-align:left;">
+1️⃣ Resuelve correctamente las <strong>10 pruebas</strong>.<br><br>
+
+2️⃣ Escribe el <strong>resultado completo de cada prueba</strong>, incluyendo el signo (+ o -).<br><br>
+
+Ejemplos:<br>
+- Si el resultado es <strong>-4</strong> → escribe <strong>-4</strong><br>
+- Si el resultado es <strong>+5</strong> → escribe <strong>5</strong> (el + no hace falta)<br>
+- Si el resultado es <strong>10</strong> → escribe <strong>10</strong><br><br>
+
+3️⃣ Coloca los resultados en orden:<br>
+<strong>Prueba 1 → Prueba 2 → … → Prueba 10</strong><br><br>
+
+4️⃣ Escribe todo seguido, sin espacios.<br><br>
+
+👉 Ejemplo: <br>
+Si tuvieras: 3, -2, 5 → escribirías: <strong>3-25</strong>
+</p>
+
+<h3>👉 Introduce la contraseña</h3>
+
+<input id="password" class="candado" placeholder="Ej: 3-25...">
+
 <br>
 <button onclick="checkPassword()">Desbloquear</button>
+
+<p style="margin-top:15px; font-size:14px;">
+💡 Consejo del Tío Matt: “¡Cuidado! Un signo mal puesto puede cambiarlo todo…”
+</p>
+
 </div>
 
 <!-- ÉXITO -->

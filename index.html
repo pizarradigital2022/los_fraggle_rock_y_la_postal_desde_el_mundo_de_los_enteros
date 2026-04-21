@@ -97,6 +97,38 @@ button:hover{background:#ff3300;}
   transform: scale(1.05);
   box-shadow: 0 0 25px #00ffcc;
 }
+
+.aviso{
+  background: linear-gradient(135deg, #ffcc00, #ff6600);
+  color: #2d2d2d;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 650px;
+  border-radius: 15px;
+  border: 4px solid #ff3300;
+  box-shadow: 0 0 20px rgba(255, 102, 0, 0.7);
+  text-align: center;
+  animation: brilloAviso 2s infinite alternate;
+}
+
+/* título */
+.aviso h2{
+  margin-top: 0;
+  color: #990000;
+  font-size: 26px;
+}
+
+/* texto */
+.aviso p{
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+/* animación suave */
+@keyframes brilloAviso {
+  from { box-shadow: 0 0 15px #ff9900; }
+  to { box-shadow: 0 0 30px #ff3300; }
+}
   
 </style>
 </head>
@@ -118,6 +150,29 @@ button:hover{background:#ff3300;}
 <h2>Selecciona duración</h2>
 <button onclick="startGame(60)">60 min</button>
 <button onclick="startGame(90)">90 min</button>
+  <div class="aviso">
+<h2>⚠️ ¡Atención, fraggle! ⚠️</h2>
+
+<p>
+Para superar estos retos tendrás que controlar bien los <strong>números enteros</strong> 
+(positivos y negativos).
+</p>
+
+<div class="math">
+\[
+\mathbb{Z}
+\]
+</div>
+
+<p>
+Además, tendrás que saber usar sus operaciones:
+<strong>sumar, restar, multiplicar y dividir</strong>.
+</p>
+
+<p>
+💡 ¡Pon en marcha tu mente y prepárate para el desafío!
+</p>
+</div>
   <hr>
   Modo profesor: <input type="password" id="accesoProfe" placeholder="Acceso profesor">
  <hr>
